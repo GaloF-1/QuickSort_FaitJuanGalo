@@ -1,0 +1,13 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/QuickSort.dir/EstDatos_Algoritmos.c.obj"
+  "CMakeFiles/QuickSort.dir/main.c.obj"
+  "QuickSort.exe"
+  "QuickSort.exe.manifest"
+  "QuickSort.pdb"
+  "libQuickSort.dll.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/QuickSort.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -54,13 +54,12 @@ void quickSort(int* array, int start, int end) {
     int rightItem = end;
     int pivot = start;
 
-    if (start < end)
-    {   while (leftItem < rightItem)
-        {
-            while (array[leftItem] < array[pivot] || array[rightItem] > array[pivot]) {
+    if (start < end) {
+        while (leftItem < rightItem) {
+            while ((array[leftItem] < array[pivot] || array[rightItem] >= array[pivot]) && leftItem < rightItem) {
                 if (array[leftItem] < array[pivot])
                     leftItem++;
-                if (array[rightItem] > array[pivot])
+                if (array[rightItem] >= array[pivot])
                     rightItem--;
             }
             if (leftItem < rightItem && array[leftItem] > array[rightItem]) { //swap
@@ -69,7 +68,7 @@ void quickSort(int* array, int start, int end) {
             }
         }
         //Swap pivot rightItem
-        if (array[pivot] > array[rightItem]){
+        if (array[pivot] > array[rightItem]) {
             printf("part [%d, %d], pivot=%d, swap P R: ", start, end, array[pivot]);
             swap(array, pivot, rightItem);
         }

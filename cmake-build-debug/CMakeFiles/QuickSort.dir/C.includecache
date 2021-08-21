@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/bauti/FIE/QuickSort_FaitJuanGalo/EstDatos_Algoritmos.h
+
+C:/Users/bauti/FIE/QuickSort_FaitJuanGalo/main.c
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+EstDatos_Algoritmos.h
+C:/Users/bauti/FIE/QuickSort_FaitJuanGalo/EstDatos_Algoritmos.h
+
