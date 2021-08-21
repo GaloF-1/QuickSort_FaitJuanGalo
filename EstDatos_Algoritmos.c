@@ -7,49 +7,80 @@
 
 
 void QuickArr(int *List, int prins, int final) {
-    int i = prins;
-    int d = final;
-    int p = prins;
-    int aux;
+    int itemIzquierda = prins;
+    int itemDerecha = final;
+    int pivote = prins;
 
     if (prins < final) {
-        while (i != d) {
-            if (List[i] < List[p]) {
-                i++;
-            } else if (List[d] > List[p]) {
-                d--;
-            } else if (List[i] >= List[p] && List[d] <= List[p]) {
-                aux = List[i];
-                List[i] = List[d];
-                List[d] = aux;
+        while (itemIzquierda != itemDerecha) {
+            if (List[itemIzquierda] < List[pivote]) {
+                itemIzquierda++;
+            } else if (List[itemDerecha] > List[pivote]) {
+                itemDerecha--;
+            } else {
+                swap(List, itemIzquierda, itemDerecha);
 
-
-                if (List[d] == List[p]) {
-                    i++;
-                } else if (List[i] == List[p]) {
-                    d--;
+                if (List[itemDerecha] == List[pivote]) {
+                    itemIzquierda++;
+                } else if (List[itemIzquierda] == List[pivote]) {
+                    itemDerecha--;
                 } else {
-                    i++;
-                    d--;
+                    itemIzquierda++;
+                    itemDerecha--;
                 }
             }
         }
 
-        aux = List[i];
-        List[i] = List[p];
-        List[p] = aux;
+        swap(List, itemIzquierda, pivote);
 
-        QuickArr(List, i + 1, final);
-        QuickArr(List, prins, i - 1);
+        QuickArr(List, itemIzquierda + 1, final);
+        QuickArr(List, prins, itemIzquierda - 1);
     }
 }
 
 
 
-void PrntArr(int * List) {
+void printArray(int * List) {
 
+    printf("%d: ", counter++);
     for (int i = 0; i < 8; i++) {
         printf("%d, ", List[i]);
     }
     printf("\n");
+}
+
+void quickSort(int* array, int start, int end) {
+    int leftItem = start + 1;
+    int rightItem = end;
+    int pivot = start;
+
+    if (start < end)
+    {   while (leftItem < rightItem)
+        {
+            while (array[leftItem] < array[pivot] || array[rightItem] > array[pivot]) {
+                if (array[leftItem] < array[pivot])
+                    leftItem++;
+                if (array[rightItem] > array[pivot])
+                    rightItem--;
+            }
+            if (leftItem < rightItem && array[leftItem] > array[rightItem]) { //swap
+                printf("swap L R: ");
+                swap(array, leftItem, rightItem);
+            }
+        }
+        //Swap pivot rightItem
+        printf("swap P R: ");
+        swap(array, pivot, rightItem);
+
+        //Sort partitions
+        quickSort(array, start, rightItem - 1);
+        quickSort(array, leftItem, end);
+    }
+}
+
+void swap(int* array, int a, int b) {
+    int aux = array[a];
+    array[a] = array[b];
+    array[b] = aux;
+    printArray(array);
 }
