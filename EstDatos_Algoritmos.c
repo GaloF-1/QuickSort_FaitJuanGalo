@@ -64,13 +64,15 @@ void quickSort(int* array, int start, int end) {
                     rightItem--;
             }
             if (leftItem < rightItem && array[leftItem] > array[rightItem]) { //swap
-                printf("swap L R: ");
+                printf("part [%d, %d], pivot=%d, swap L R: ", start, end, array[pivot]);
                 swap(array, leftItem, rightItem);
             }
         }
         //Swap pivot rightItem
-        printf("swap P R: ");
-        swap(array, pivot, rightItem);
+        if (array[pivot] > array[rightItem]){
+            printf("part [%d, %d], pivot=%d, swap P R: ", start, end, array[pivot]);
+            swap(array, pivot, rightItem);
+        }
 
         //Sort partitions
         quickSort(array, start, rightItem - 1);
